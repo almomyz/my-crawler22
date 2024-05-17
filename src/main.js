@@ -13,6 +13,7 @@ const startUrls = ['https://crawlee.dev'];
 // Create the PuppeteerCrawler instance
 const crawler = new PuppeteerCrawler({
     requestHandler: router,
+    headless: false,
     // Comment this option to scrape the full website.
     maxRequestsPerCrawl: 20,
 });
