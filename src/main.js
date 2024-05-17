@@ -1,5 +1,5 @@
 import express from 'express';
-import { PuppeteerCrawler, ProxyConfiguration } from 'crawlee';
+import { PuppeteerCrawler, Configuration } from 'crawlee';
 import { router } from './routes.js';
 
 const app = express();
@@ -13,10 +13,29 @@ const startUrls = ['https://crawlee.dev'];
 // Create the PuppeteerCrawler instance
 const crawler = new PuppeteerCrawler({
     requestHandler: router,
-    headless: false,
+    headless: true,
+
+    launchContext: {
+        launchOptions: {
+            args: [
+                '--no-sandbox',
+                '--disable-setuid-sandbox',
+                '--disable-dev-shm-usage',
+                '--disable-accelerated-2d-canvas',
+                '--no-first-run',
+                '--no-zygote',
+                '--single-process', // &lt;- this one doesn't work in Windows
+                '--disable-gpu'
+            ],
+            headless: true // Ensure headless mode is enabled
+        }
+    }
+
     // Comment this option to scrape the full website.
     maxRequestsPerCrawl: 20,
-});
+}, new Configuration({
+    persistStorage: false,
+}));
 
 // Endpoint to start the crawler
 app.get('/start-crawl', async (req, res) => {
