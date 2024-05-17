@@ -15,6 +15,7 @@ const crawler = new PuppeteerCrawler({
     requestHandler: router,
     headless: false,
     requestHandlerTimeoutSecs: 300,
+    maxConcurrency : 1,
     launchContext: {
         launchOptions: {
             args: [
