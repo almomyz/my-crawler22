@@ -32,7 +32,7 @@ const crawler = new PuppeteerCrawler({
     },
 
     // Comment this option to scrape the full website.
-    maxRequestsPerCrawl: 20,
+
 }, new Configuration({
     persistStorage: false,
 }));
