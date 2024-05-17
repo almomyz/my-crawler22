@@ -29,7 +29,7 @@ const crawler = new PuppeteerCrawler({
             ],
             headless: true // Ensure headless mode is enabled
         }
-    }
+    },
 
     // Comment this option to scrape the full website.
     maxRequestsPerCrawl: 20,
