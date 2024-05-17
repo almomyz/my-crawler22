@@ -15,7 +15,6 @@ const crawler = new PuppeteerCrawler({
     requestHandler: router,
     headless: true,
     requestHandlerTimeoutSecs: 300,
-    
     launchContext: {
         launchOptions: {
             args: [
@@ -34,9 +33,7 @@ const crawler = new PuppeteerCrawler({
 
     // Comment this option to scrape the full website.
 
-}, new Configuration({
-    persistStorage: false,
-}));
+});
 
 // Endpoint to start the crawler
 app.get('/start-crawl', async (req, res) => {
