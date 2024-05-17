@@ -13,7 +13,7 @@ const startUrls = ['https://crawlee.dev'];
 // Create the PuppeteerCrawler instance
 const crawler = new PuppeteerCrawler({
     requestHandler: router,
-    headless: true,
+    headless: false,
     requestHandlerTimeoutSecs: 300,
     launchContext: {
         launchOptions: {
