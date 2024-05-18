@@ -28,7 +28,7 @@ const crawler = new PuppeteerCrawler({
                 '--single-process', // &lt;- this one doesn't work in Windows
                 '--disable-gpu'
             ],
-            headless: true // Ensure headless mode is enabled
+            // Ensure headless mode is enabled
         }
     },
 
