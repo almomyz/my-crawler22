@@ -1,5 +1,5 @@
 import express from 'express';
-import { PuppeteerCrawler, Configuration } from 'crawlee';
+import { PuppeteerCrawler, Configuration,Dataset } from 'crawlee';
 import { router } from './routes.js';
 
 const app = express();
@@ -40,7 +40,10 @@ const crawler = new PuppeteerCrawler({
 app.get('/start-crawl', async (req, res) => {
     try {
         await crawler.run(startUrls);
-        res.send('Crawling completed!');
+       const dd=await  Dataset.getData();
+        res.send({
+            data: dd
+        });
     } catch (error) {
         console.error('Error during crawling:', error);
         res.status(500).send('Error during crawling');
